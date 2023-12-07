@@ -1,0 +1,116 @@
+header {
+  display: flex;
+  background-color: var(--color-bg-navbar);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  z-index: 999999;
+}
+.navItems {
+  color: rgba(255, 255, 255, 0.87);
+}
+nav {
+  margin-right: 10px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 1%;
+  margin-top: 1%;
+  gap: 5px;
+}
+.navItems:hover {
+  color: var(--color-bg);
+}
+.logo img {
+  width: 115px;
+}
+
+nav ul {
+  display: flex;
+  gap: 10px;
+}
+/* NAV Y CATEGORIES*/
+.hamburguer,
+nav label {
+  display: none;
+}
+
+nav ul {
+  font-family: 'Catamaran', sans-serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav li {
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 0;
+  }
+
+  nav label,
+  .hamburguer {
+    display: block;
+    position: fixed;
+    right: 0.5%;
+    z-index: 99999999999;
+  }
+
+  nav label {
+    background-color: var(--color-bg);
+    border-radius: 0.3em;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding: 1px;
+  }
+
+  .hamburguer {
+    opacity: 0;
+    z-index: 99999999999;
+  }
+
+  nav ul {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+  }
+
+  nav li {
+    margin: 10px 0;
+  }
+
+  nav input[type='checkbox']:checked + label + ul {
+    display: flex;
+    animation: fadeInAnimation ease 1s;
+  }
+
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  nav label {
+    font-size: 1.5em;
+    cursor: pointer;
+    top: 0;
+  }
+}

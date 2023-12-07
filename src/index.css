@@ -1,0 +1,43 @@
+:root {
+  font-family: 'Patrick Hand', cursive;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  --color-bg: #0d073e96;
+  --color-bg-container: #12457598;
+  --color-bg-button: #242424d1;
+  --color-bg-navbar: #6ac9e5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  font-size: 1.1em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+h1 {
+  font-size: 3.3em;
+}
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image: url('/bg.jpg');
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

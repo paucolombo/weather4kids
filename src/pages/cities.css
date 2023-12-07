@@ -1,0 +1,39 @@
+.cities h1 {
+  font-family: 'Catamaran', sans-serif;
+  color: var(--color-bg-container);
+  font-size: 3.2em;
+}
+.cities {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.citiesList {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+.cityCard {
+  width: 160px;
+  background-color: var(--color-bg-container);
+  border-radius: 8px;
+  padding: 0.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 700px) {
+  .cities {
+    margin-top: 75px;
+  }
+}
+@media screen and (max-width: 1070px) {
+  .citiesList {
+    width: 100%;
+    gap: 1.1em;
+  }
+}
