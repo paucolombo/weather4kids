@@ -2,7 +2,6 @@ import React from 'react'
 import "./cities.css";
 import { CITIES } from '../data/cities';
 import { Link } from 'react-router-dom';
-import City from '../components/CityCard';
 
 function Cities() {
   return (

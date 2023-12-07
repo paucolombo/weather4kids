@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 import NextDays from './pages/NextDays';
-import Cities from './pages/cities';
+import Cities from './pages/Cities';
 import CityCard from './components/CityCard';
-import CurrentCity from './pages/currentCity';
+import CurrentCity from './pages/CurrentCity';
 
 function App() {
   const [currentPosition, setCurrentPosition] = useState([]);
