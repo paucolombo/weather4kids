@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import CurrentCity from './pages/currentCity'
-import Navbar from './components/navbar'
+import React, { useState, useEffect } from 'react';
+import CurrentCity from './pages/currentCity';
+import Navbar from './components/navbar';
 import { Routes, Route } from 'react-router-dom';
 import NextDays from './pages/NextDays';
 import Cities from './pages/cities';
