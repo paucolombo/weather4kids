@@ -4,7 +4,7 @@ import { CITIES } from '../data/cities';
 import "../pages/NextDays.css"
 import { useState, useEffect } from 'react';
 import NextDays from '../pages/NextDays';
-import CurrentCity from '../pages/currentCity';
+import CurrentCity from '../pages/CurrentCity';
 
 function CityCard({ apiKey }) {
   const { name } = useParams();
