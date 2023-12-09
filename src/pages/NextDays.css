@@ -30,8 +30,11 @@
 }
 @media screen and (max-width: 490px) {
   .forecastList {
-    grid-template-columns: 120px 75px 70px 30px 30px;
+    grid-template-columns: 110px 75px 66px 30px 30px;
     padding: 0.5em;
     height: 80px;
+  }
+  .forecastContainer {
+    width: 320px;
   }
 }

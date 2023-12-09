@@ -26,6 +26,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.cityCard:hover {
+  filter: brightness(115%);
+  transition: filter 0.3s ease-in-out;
+}
 @media screen and (max-width: 700px) {
   .cities {
     margin-top: 75px;

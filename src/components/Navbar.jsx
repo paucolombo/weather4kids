@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <header>
       <div className="logo">
-        <img src="/logo.png" alt="weather4kids" />
+        <NavLink to=""><img src="/logo.png" alt="weather4kids" /></NavLink>
       </div>
       <nav>
         <input className="hamburguer" type="checkbox" id="menu" />

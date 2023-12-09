@@ -9,7 +9,6 @@ import CurrentCity from '../pages/CurrentCity';
 function CityCard({ apiKey }) {
   const { name } = useParams();
   const [cityPosition, setCityPosition] = useState([]);
-  const WEATHER_API_KEY = "40006bbf0e3238d48dca5ea44a886d14";
   useEffect(() => {
     const selectedCity = CITIES.find(city => city.name === name);
     const coords = {
