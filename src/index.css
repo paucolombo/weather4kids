@@ -42,7 +42,7 @@ body {
   justify-content: center;
 }
 .loading {
-  background-color: black;
+  background-color: var(--color-bg-navbar);
   width: 100vw;
   height: 100vh;
   display: flex;
