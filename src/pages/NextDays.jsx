@@ -9,7 +9,7 @@ function NextDays({ currentPosition, apiKey }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (currentPosition.latitude != undefined) {
+        if (currentPosition.latitude != undefined && forecast.length === 0) {
           const WEATHER_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=${apiKey}&units=metric`;
           let data = await fetch(WEATHER_URL).then((res) => res.json());
           const dailyWeather = {};
