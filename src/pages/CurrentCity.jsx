@@ -7,7 +7,7 @@ function CurrentCity({ currentPosition, apiKey, showDetails }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (currentPosition.latitude != undefined) {
+        if (currentPosition.latitude != undefined && weather == []) {
           const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=${apiKey}&units=metric`;
           let data = await fetch(WEATHER_URL).then((res) => res.json());
           setWeather(data);
