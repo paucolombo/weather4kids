@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import "./NextDays.css";
+import { initialState, reducer } from '../hooks/weatherReducer';
+
 function NextDays({ currentPosition, apiKey }) {
-  const [forecast, setForecast] = useState([]);
-  const [minTemperature, setMinTemp] = useState([]);
-  const [maxTemperature, setMaxTemp] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { forecast, minTemperature, maxTemperature } = state;
   let numberDay = 0;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (currentPosition.latitude != undefined && forecast.length === 0) {
+        if (currentPosition.latitude !== undefined && forecast.length === 0) {
           const WEATHER_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=${apiKey}&units=metric`;
           let data = await fetch(WEATHER_URL).then((res) => res.json());
           const dailyWeather = {};
@@ -28,12 +29,12 @@ function NextDays({ currentPosition, apiKey }) {
             minTemp.push(minTemperature);
             maxTemp.push(maxTemperature);
           });
-          setMinTemp(minTemp);
-          setMaxTemp(maxTemp);
+          dispatch({ type: 'SET_MIN_TEMPERATURE', payload: minTemp });
+          dispatch({ type: 'SET_MAX_TEMPERATURE', payload: maxTemp });
           if (maxTemperature.length === 5) { numberDay = -1 }
           const dailyData = data.list.filter((weatherTime) =>
             weatherTime.dt_txt.includes("12:00:00"));
-          setForecast(dailyData);
+          dispatch({ type: 'SET_FORECAST', payload: dailyData });
         };
       }
       catch (error) {
@@ -42,6 +43,7 @@ function NextDays({ currentPosition, apiKey }) {
     };
     fetchData();
   }, [currentPosition]);
+
   return (
     <div className='nextDaysContainer'>
       <h1 className='titleNextDays'>Next Days</h1>
@@ -71,4 +73,5 @@ function NextDays({ currentPosition, apiKey }) {
     </div>
   )
 }
-export default NextDays
+
+export default NextDays;
