@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import "./NextDays.css";
-import { useWeatherForecast } from '../hooks/UseWeatherForecast';
+import { useWeatherForecast } from '../hooks/useWeatherForecast';
 
 function NextDays({ currentPosition}) {
   let numberDay = 0;
