@@ -1,5 +1,5 @@
 import React from 'react'
-import useWeatherKid from '../hooks/useWeatherKid';
+import useWeatherKid from '../../hooks/useWeatherKid';
 
 function Kid({ weather, temperature }) {
   const weatherKid = useWeatherKid(weather, temperature);

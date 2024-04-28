@@ -1,48 +1,10 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import "./NextDays.css";
-import { initialState, reducer } from '../hooks/weatherReducer';
+import { useWeatherForecast } from '../hooks/UseWeatherForecast';
 
-function NextDays({ currentPosition, apiKey }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { forecast, minTemperature, maxTemperature } = state;
+function NextDays({ currentPosition}) {
   let numberDay = 0;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (currentPosition.latitude !== undefined && forecast.length === 0) {
-          const WEATHER_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=${apiKey}&units=metric`;
-          let data = await fetch(WEATHER_URL).then((res) => res.json());
-          const dailyWeather = {};
-          data.list.map((weatherTime) => {
-            const date = weatherTime.dt_txt.split(' ')[0];
-            if (!dailyWeather[date]) {
-              dailyWeather[date] = [];
-            }
-            dailyWeather[date].push(weatherTime);
-          })
-          const minTemp = [];
-          const maxTemp = [];
-          Object.values(dailyWeather).forEach((dailyData) => {
-            const minTemperature = Math.min(...dailyData.map((time) => time.main.temp_min));
-            const maxTemperature = Math.max(...dailyData.map((time) => time.main.temp_max));
-            minTemp.push(minTemperature);
-            maxTemp.push(maxTemperature);
-          });
-          dispatch({ type: 'SET_MIN_TEMPERATURE', payload: minTemp });
-          dispatch({ type: 'SET_MAX_TEMPERATURE', payload: maxTemp });
-          if (maxTemperature.length === 5) { numberDay = -1 }
-          const dailyData = data.list.filter((weatherTime) =>
-            weatherTime.dt_txt.includes("12:00:00"));
-          dispatch({ type: 'SET_FORECAST', payload: dailyData });
-        };
-      }
-      catch (error) {
-        console.log("error " + error);
-      }
-    };
-    fetchData();
-  }, [currentPosition]);
+  const { forecast, minTemperature, maxTemperature } = useWeatherForecast(currentPosition);
 
   return (
     <div className='nextDaysContainer'>

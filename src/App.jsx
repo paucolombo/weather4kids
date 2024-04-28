@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Cities from './pages/Cities';
-import CityCard from './components/CityCard';
+import CityCard from './components/cityCard/CityCard';
 
 const CurrentCity = lazy(() => {
   return new Promise((resolve) => {
@@ -19,7 +19,6 @@ const NextDays = lazy(() => {
 
 function App() {
   const [currentPosition, setCurrentPosition] = useState([]);
-  const WEATHER_API_KEY = "40006bbf0e3238d48dca5ea44a886d14";
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error);
   }, []);
@@ -41,20 +40,20 @@ function App() {
         <Route path='/' element=
           {
             <Suspense fallback={<div className='loading'><img src='spinner.svg' alt='loading' /></div>}>
-              <CurrentCity currentPosition={currentPosition} apiKey={WEATHER_API_KEY} showDetails={true} />
+              <CurrentCity currentPosition={currentPosition} showDetails={true} />
             </Suspense>
           }
         />
         <Route path='/nextdays' element=
           {
             <Suspense fallback={<div className='loading'><img src='spinner.svg' alt='loading' /></div>}>
-              <NextDays currentPosition={currentPosition} apiKey={WEATHER_API_KEY} />
+              <NextDays currentPosition={currentPosition} />
             </Suspense>
           }
         />
         <Route path='/cities' element={<Cities />} />
         <Route path='/:name' element={
-          <CityCard apiKey={WEATHER_API_KEY} />
+          <CityCard/>
         } />
       </Routes>
     </>

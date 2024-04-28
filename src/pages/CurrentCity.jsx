@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import "./CurrentCity.css";
-import Kid from '../components/Kid';
+import Kid from '../components/kid/Kid';
+import { ApiCall } from '../utils/Apicalls';
 
-function CurrentCity({ currentPosition, apiKey, showDetails }) {
+function CurrentCity({ currentPosition, showDetails }){
   const [weather, setWeather] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
         if (currentPosition.latitude != undefined && weather.length === 0) {
-          const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=${apiKey}&units=metric`;
-          let data = await fetch(WEATHER_URL).then((res) => res.json());
-          setWeather(data);
+          const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=`;
+          ApiCall(WEATHER_URL)
+          .then(response => {
+            setWeather(response);
+          })
+          .catch(error => {
+            console.error('Error fetching weather data:', error);
+          });
         }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
   }, [currentPosition]);
   return (
     <>

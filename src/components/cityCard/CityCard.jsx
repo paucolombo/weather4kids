@@ -1,12 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { CITIES } from '../data/cities';
-import "../pages/NextDays.css"
+import { CITIES } from '../../data/cities';
+import "../../pages/NextDays.css"
 import { useState, useEffect } from 'react';
-import NextDays from '../pages/NextDays';
-import CurrentCity from '../pages/CurrentCity';
+import NextDays from '../../pages/NextDays';
+import CurrentCity from '../../pages/CurrentCity';
 
-function CityCard({ apiKey }) {
+
+function CityCard() {
   const { name } = useParams();
   const [cityPosition, setCityPosition] = useState([]);
   useEffect(() => {
@@ -20,8 +21,8 @@ function CityCard({ apiKey }) {
     , []);
   return (
     <div className='selectedCityCard'>
-      <CurrentCity currentPosition={cityPosition} apiKey={apiKey} showDetails={false} />
-      <NextDays currentPosition={cityPosition} apiKey={apiKey} />
+      <CurrentCity currentPosition={cityPosition} showDetails={false} />
+      <NextDays currentPosition={cityPosition} />
     </div>
   )
 }
