@@ -7,8 +7,7 @@ function CurrentCity({ currentPosition, showDetails }){
   const [weather, setWeather] = useState([]);
   useEffect(() => {
         if (currentPosition.latitude != undefined && weather.length === 0) {
-          const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&appid=`;
-          ApiCall(WEATHER_URL)
+          ApiCall('weather', {lat: currentPosition.latitude, lon: currentPosition.longitude, units: 'metric'})
           .then(response => {
             setWeather(response);
           })
