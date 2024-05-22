@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import './NextDays.css';
-import { useWeatherForecast } from '../hooks/UseWeatherForecast';
+import { getForecast } from '../reducers/weahterActions';
+import { initialState, reducer } from '../reducers/weatherReducer';
 
 function NextDays({ currentPosition }) {
   let numberDay = 0;
-  const { forecast, minTemperature, maxTemperature } = useWeatherForecast(currentPosition);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { forecast, minTemperature, maxTemperature } = state;
+  useEffect(() => {
+         getForecast(currentPosition, forecast, minTemperature, maxTemperature, dispatch)
+    }, [currentPosition]);
 
   return (
     <div className="nextDaysContainer">
